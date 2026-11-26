@@ -17,7 +17,7 @@ struct ContentView: View {
                 } header: {
                     Text("Blockers")
                 } footer: {
-                    Text("Turn each one on in Settings › Apps › Safari › Extensions. The blockers only give Safari a list of rules; they can't see the pages you visit.")
+                    Text("Turn each one on in \(Platform.extensionSettingsPath). The blockers only give Safari a list of rules; they can't see the pages you visit.")
                 }
 
                 Section {
@@ -46,16 +46,18 @@ struct ContentView: View {
                 }
 
                 Section {
-                    ForEach(store.allowlist, id: \.self) { Text($0) }
+                    ForEach(store.allowlist, id: \.self) { domain in
+                        Text(domain).contextMenu {
+                            Button("Remove", role: .destructive) { Task { await store.disallow([domain]) } }
+                        }
+                    }
                         .onDelete { offsets in
                             let domains = offsets.map { store.allowlist[$0] }
                             Task { await store.disallow(domains) }
                         }
                     HStack {
                         TextField("example.com", text: $newDomain)
-                            .textInputAutocapitalization(.never)
-                            .autocorrectionDisabled()
-                            .keyboardType(.URL)
+                            .urlEntry()
                             .submitLabel(.done)
                             .onSubmit(addDomain)
                         Button("Add", action: addDomain)
@@ -64,15 +66,13 @@ struct ContentView: View {
                 } header: {
                     Text("Allowed sites")
                 } footer: {
-                    Text(domainInvalid ? "That doesn't look like a domain." : "Nothing is blocked on these sites or their subdomains.")
+                    Text(domainInvalid ? "That doesn't look like a domain." : Platform.allowlistFooter)
                         .foregroundStyle(domainInvalid ? .red : .secondary)
                 }
 
                 Section {
                     TextField(FilterStore.defaultServerURL, text: $store.serverURL)
-                        .textInputAutocapitalization(.never)
-                        .autocorrectionDisabled()
-                        .keyboardType(.URL)
+                        .urlEntry()
                 } header: {
                     Text("Filter server")
                 } footer: {
@@ -88,8 +88,14 @@ struct ContentView: View {
             await store.updateIfStale()
         }
         .onChange(of: scenePhase) { _, phase in
-            // Pick up changes made in Settings while the app was in the background.
-            if phase == .active { Task { await store.refreshStates() } }
+            // Pick up changes made while the app was in the background: blockers
+            // switched on in Settings, sites allowed from the Share menu or on another device.
+            if phase == .active {
+                Task {
+                    await store.syncAllowlist()
+                    await store.refreshStates()
+                }
+            }
         }
     }
 
@@ -145,6 +151,30 @@ private struct BlockerRow: View {
         case false?: Text("Off in Settings").badgeStyle(.orange)
         case nil: EmptyView()
         }
+    }
+}
+
+/// Wording and input behavior that differ between iOS and macOS.
+enum Platform {
+    #if os(macOS)
+    static let extensionSettingsPath = "Safari › Settings › Extensions"
+    static let allowlistFooter = "Nothing is blocked on these sites or their subdomains. Synced with your other devices through iCloud."
+    #else
+    static let extensionSettingsPath = "Settings › Apps › Safari › Extensions"
+    static let allowlistFooter = "Nothing is blocked on these sites or their subdomains. In Safari you can also tap Share › Ad Nope. Synced with your other devices through iCloud."
+    #endif
+}
+
+private extension View {
+    /// Plain-text entry for domains and URLs: no capitals or autocorrect.
+    func urlEntry() -> some View {
+        #if os(iOS)
+        self.textInputAutocapitalization(.never)
+            .autocorrectionDisabled()
+            .keyboardType(.URL)
+        #else
+        self.autocorrectionDisabled()
+        #endif
     }
 }
 

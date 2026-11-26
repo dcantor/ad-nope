@@ -1,4 +1,4 @@
-# Ad Nope: a Safari content blocker for iPhone and iPad
+# Ad Nope: a Safari content blocker for iPhone, iPad and Mac
 
 A small, private ad and tracker blocker for Safari. It's a Safari **Content
 Blocker**: the app gives Safari a list of rules, Safari applies them itself,
@@ -15,23 +15,29 @@ and the app never sees the pages you visit.
         │  app checks about once a day (and on "Update Filters Now")
         ▼
  Blocker.app ── verifies SHA-256, adds your allowlist, writes to the App Group
-        │  SFContentBlockerManager.reloadContentBlocker
-        ▼
- 3 content-blocker extensions ── hand the file to Safari; Safari compiles and enforces it
+        │  SFContentBlockerManager.reloadContentBlocker       ▲
+        ▼                                                     │ allowlist synced by iCloud,
+ 3 content-blocker extensions ── hand the file to Safari;     │ also editable from Safari's
+                                 Safari compiles and enforces │ Share menu (iPhone, iPad)
 ```
 
 ## Layout
 
 | Path | What it is |
 |---|---|
-| `App/` | SwiftUI host app: status, update, allowlist, filter-server setting |
+| `App/` | SwiftUI host app (iOS, iPadOS, macOS): status, updates, allowlist, filter-server setting |
 | `Shared/Blocker.swift` | The three blockers and App Group file paths (compiled into every target) |
+| `Shared/RuleComposer.swift` | Builds each blocker's file (base list + allowlist) and reloads Safari; used by the app and the Share extension |
+| `Shared/Allowlist.swift` | Allowed sites: App Group storage mirrored to iCloud key-value storage |
 | `Extension/ContentBlockerRequestHandler.swift` | Shared by all three extensions; hands Safari a file URL |
+| `ShareExtension/` | Safari Share › Ad Nope: allow or re-block the current site (iPhone, iPad) |
 | `Seeds/{Ads,Privacy,Annoyances}/blockerList.json` | Tiny starter lists bundled in each extension for first launch |
-| `Config/` | Info.plists and the App Group entitlement |
+| `Config/` | Info.plists and entitlements (iOS and macOS variants) |
 | `tools/build_filters.py` | Filter-list → Safari JSON converter |
 | `tools/compile_check.swift` | Compiles lists with WebKit; `--prune` removes rules WebKit rejects |
 | `tools/filters.json` | Which lists go into which blocker |
+| `tools/gen_xcodeproj.py` | Generates `Blocker.xcodeproj` (re-run only to change targets or build settings) |
+| `tools/make_icon.swift` | Draws the app icon |
 | `.github/workflows/filters.yml` | Daily build and publish to GitHub Pages |
 
 There are three extensions because each is limited to 150,000 rules, and so
@@ -42,11 +48,13 @@ you can turn categories on and off separately in Settings.
 1. Open `Blocker.xcodeproj`. Bundle IDs come from two project-level build
    settings: `BUNDLE_ID_PREFIX` (`com.dcantor`) and `APP_GROUP_ID`
    (`group.com.dcantor.blocker`). Signing is automatic with your team.
-2. Run the **Blocker** scheme on your iPhone or iPad. The project, scheme and
+2. Run the **Blocker** scheme on your iPhone, iPad or Mac (choose "My Mac" as
+   the destination). The project, scheme and
    bundle IDs are still called Blocker internally; only the displayed name is
    "Ad Nope" (the `INFOPLIST_KEY_CFBundleDisplayName` setting).
-3. On the device, go to **Settings › Apps › Safari › Extensions** and turn on
-   Ads, Trackers and Annoyances (listed under Ad Nope).
+3. Turn on Ads, Trackers and Annoyances (listed under Ad Nope):
+   - iPhone and iPad: **Settings › Apps › Safari › Extensions**
+   - Mac: **Safari › Settings › Extensions**
 4. On first launch the app downloads the full lists from
    `https://dcantor.github.io/ad-nope/` (`FilterStore.defaultServerURL`).
    Until then, the small starter lists bundled with the app are active.
@@ -91,7 +99,20 @@ swift tools/compile_check.swift dist/ads.json dist/privacy.json dist/annoyances.
   [SafariConverterLib](https://github.com/AdguardTeam/SafariConverterLib)
   converts more of these if you outgrow this script.
 - **Allowlist:** each allowed site becomes an `ignore-previous-rules` rule added
-  at the end of every list, so it overrides everything above it.
+  at the end of every list, so it overrides everything above it. Composing is
+  done on bytes, not by parsing JSON, so it's fast and fits in the Share
+  extension's memory limit.
+- **Share menu:** in Safari, tap Share › Ad Nope to allow the current site (or
+  block it again). The extension receives only the page's address. Reload the
+  page afterwards to see the change.
+- **iCloud sync:** the allowlist is stored in iCloud key-value storage (free,
+  private to your Apple Account). The first time a device syncs, its list and
+  iCloud's are merged; after that iCloud wins, so removals carry over too.
+  Changes arrive within seconds to minutes while the app is open, or the next
+  time you open it.
+- **Mac:** the same app and blockers, sandboxed. There's no Share extension on
+  the Mac; add sites in the app, or on your iPhone and let iCloud sync them.
+  The Mac checks for new lists about twice a day while the app is running.
 - **Background updates:** iOS decides when `BGAppRefreshTask` runs, often
   overnight. The app also updates on launch when the last check is over a day old.
 - **Licenses:** EasyList and EasyPrivacy are GPLv3 / CC BY-SA 3.0. That's fine

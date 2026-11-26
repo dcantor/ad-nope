@@ -7,45 +7,54 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B10C00000000000000000022 /* BlockerAds.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B10C0000000000000000000A; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		B10C00000000000000000023 /* BlockerPrivacy.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B10C0000000000000000000B; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		B10C00000000000000000024 /* BlockerAnnoyances.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B10C0000000000000000000C; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		B10C0000000000000000002A /* BlockerAds.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B10C0000000000000000000A; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		B10C0000000000000000002D /* BlockerPrivacy.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B10C00000000000000000012; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		B10C00000000000000000030 /* BlockerAnnoyances.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B10C0000000000000000001A; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		B10C00000000000000000033 /* BlockerShare.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B10C00000000000000000022; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		B10C00000000000000000026 /* PBXContainerItemProxy */ = {
+		B10C0000000000000000002B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = B10C00000000000000000039;
+			containerPortal = B10C00000000000000000045;
 			proxyType = 1;
-			remoteGlobalIDString = B10C00000000000000000013;
+			remoteGlobalIDString = B10C00000000000000000011;
 			remoteInfo = BlockerAds;
 		};
-		B10C00000000000000000028 /* PBXContainerItemProxy */ = {
+		B10C0000000000000000002E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = B10C00000000000000000039;
+			containerPortal = B10C00000000000000000045;
 			proxyType = 1;
-			remoteGlobalIDString = B10C0000000000000000001A;
+			remoteGlobalIDString = B10C00000000000000000019;
 			remoteInfo = BlockerPrivacy;
 		};
-		B10C0000000000000000002A /* PBXContainerItemProxy */ = {
+		B10C00000000000000000031 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = B10C00000000000000000039;
+			containerPortal = B10C00000000000000000045;
 			proxyType = 1;
 			remoteGlobalIDString = B10C00000000000000000021;
 			remoteInfo = BlockerAnnoyances;
 		};
+		B10C00000000000000000034 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B10C00000000000000000045;
+			proxyType = 1;
+			remoteGlobalIDString = B10C00000000000000000029;
+			remoteInfo = BlockerShare;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		B10C00000000000000000025 /* Embed Foundation Extensions */ = {
+		B10C00000000000000000036 /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				B10C00000000000000000022,
-				B10C00000000000000000023,
-				B10C00000000000000000024,
+				B10C0000000000000000002A,
+				B10C0000000000000000002D,
+				B10C00000000000000000030,
+				B10C00000000000000000033,
 			);
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -53,10 +62,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		B10C00000000000000000009 /* Blocker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Blocker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B10C0000000000000000000A /* BlockerAds.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = BlockerAds.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		B10C0000000000000000000B /* BlockerPrivacy.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = BlockerPrivacy.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		B10C0000000000000000000C /* BlockerAnnoyances.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = BlockerAnnoyances.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		B10C00000000000000000012 /* BlockerPrivacy.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = BlockerPrivacy.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		B10C0000000000000000001A /* BlockerAnnoyances.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = BlockerAnnoyances.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		B10C00000000000000000022 /* BlockerShare.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = BlockerShare.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		B10C00000000000000000037 /* Blocker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Blocker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -75,27 +85,32 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
-		B10C00000000000000000004 /* Config */ = {
+		B10C00000000000000000004 /* ShareExtension */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = ShareExtension;
+			sourceTree = "<group>";
+		};
+		B10C00000000000000000005 /* Config */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = Config;
 			sourceTree = "<group>";
 		};
-		B10C00000000000000000005 /* tools */ = {
+		B10C00000000000000000006 /* tools */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = tools;
 			sourceTree = "<group>";
 		};
-		B10C00000000000000000006 /* Ads */ = {
+		B10C00000000000000000007 /* Ads */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = Ads;
 			sourceTree = "<group>";
 		};
-		B10C00000000000000000007 /* Privacy */ = {
+		B10C00000000000000000008 /* Privacy */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = Privacy;
 			sourceTree = "<group>";
 		};
-		B10C00000000000000000008 /* Annoyances */ = {
+		B10C00000000000000000009 /* Annoyances */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = Annoyances;
 			sourceTree = "<group>";
@@ -103,14 +118,14 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		B10C00000000000000000011 /* Frameworks */ = {
+		B10C0000000000000000000F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B10C00000000000000000018 /* Frameworks */ = {
+		B10C00000000000000000017 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -124,7 +139,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B10C00000000000000000030 /* Frameworks */ = {
+		B10C00000000000000000027 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B10C0000000000000000003C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -134,50 +156,52 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		B10C00000000000000000036 /* Seeds */ = {
+		B10C00000000000000000042 /* Seeds */ = {
 			isa = PBXGroup;
 			children = (
-				B10C00000000000000000006 /* Ads */,
-				B10C00000000000000000007 /* Privacy */,
-				B10C00000000000000000008 /* Annoyances */,
+				B10C00000000000000000007 /* Ads */,
+				B10C00000000000000000008 /* Privacy */,
+				B10C00000000000000000009 /* Annoyances */,
 			);
 			path = Seeds;
 			sourceTree = "<group>";
 		};
-		B10C00000000000000000037 /* Products */ = {
+		B10C00000000000000000043 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B10C00000000000000000009,
+				B10C00000000000000000037,
 				B10C0000000000000000000A,
-				B10C0000000000000000000B,
-				B10C0000000000000000000C,
+				B10C00000000000000000012,
+				B10C0000000000000000001A,
+				B10C00000000000000000022,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		B10C00000000000000000038 = {
+		B10C00000000000000000044 = {
 			isa = PBXGroup;
 			children = (
 				B10C00000000000000000001 /* App */,
 				B10C00000000000000000002 /* Shared */,
 				B10C00000000000000000003 /* Extension */,
-				B10C00000000000000000036 /* Seeds */,
-				B10C00000000000000000004 /* Config */,
-				B10C00000000000000000005 /* tools */,
-				B10C00000000000000000037 /* Products */,
+				B10C00000000000000000004 /* ShareExtension */,
+				B10C00000000000000000042 /* Seeds */,
+				B10C00000000000000000005 /* Config */,
+				B10C00000000000000000006 /* tools */,
+				B10C00000000000000000043 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		B10C00000000000000000013 /* BlockerAds */ = {
+		B10C00000000000000000011 /* BlockerAds */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B10C0000000000000000000F;
+			buildConfigurationList = B10C0000000000000000000D;
 			buildPhases = (
+				B10C0000000000000000000E,
+				B10C0000000000000000000F,
 				B10C00000000000000000010,
-				B10C00000000000000000011,
-				B10C00000000000000000012,
 			);
 			buildRules = (
 			);
@@ -186,20 +210,20 @@
 			fileSystemSynchronizedGroups = (
 				B10C00000000000000000002 /* Shared */,
 				B10C00000000000000000003 /* Extension */,
-				B10C00000000000000000006 /* Ads */,
+				B10C00000000000000000007 /* Ads */,
 			);
 			name = BlockerAds;
 			productName = BlockerAds;
 			productReference = B10C0000000000000000000A;
 			productType = "com.apple.product-type.app-extension";
 		};
-		B10C0000000000000000001A /* BlockerPrivacy */ = {
+		B10C00000000000000000019 /* BlockerPrivacy */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B10C00000000000000000016;
+			buildConfigurationList = B10C00000000000000000015;
 			buildPhases = (
+				B10C00000000000000000016,
 				B10C00000000000000000017,
 				B10C00000000000000000018,
-				B10C00000000000000000019,
 			);
 			buildRules = (
 			);
@@ -208,11 +232,11 @@
 			fileSystemSynchronizedGroups = (
 				B10C00000000000000000002 /* Shared */,
 				B10C00000000000000000003 /* Extension */,
-				B10C00000000000000000007 /* Privacy */,
+				B10C00000000000000000008 /* Privacy */,
 			);
 			name = BlockerPrivacy;
 			productName = BlockerPrivacy;
-			productReference = B10C0000000000000000000B;
+			productReference = B10C00000000000000000012;
 			productType = "com.apple.product-type.app-extension";
 		};
 		B10C00000000000000000021 /* BlockerAnnoyances */ = {
@@ -230,28 +254,50 @@
 			fileSystemSynchronizedGroups = (
 				B10C00000000000000000002 /* Shared */,
 				B10C00000000000000000003 /* Extension */,
-				B10C00000000000000000008 /* Annoyances */,
+				B10C00000000000000000009 /* Annoyances */,
 			);
 			name = BlockerAnnoyances;
 			productName = BlockerAnnoyances;
-			productReference = B10C0000000000000000000C;
+			productReference = B10C0000000000000000001A;
 			productType = "com.apple.product-type.app-extension";
 		};
-		B10C00000000000000000032 /* Blocker */ = {
+		B10C00000000000000000029 /* BlockerShare */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B10C0000000000000000002E;
+			buildConfigurationList = B10C00000000000000000025;
 			buildPhases = (
-				B10C0000000000000000002F,
-				B10C00000000000000000030,
-				B10C00000000000000000031,
-				B10C00000000000000000025 /* Embed Foundation Extensions */,
+				B10C00000000000000000026,
+				B10C00000000000000000027,
+				B10C00000000000000000028,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				B10C00000000000000000027,
-				B10C00000000000000000029,
-				B10C0000000000000000002B,
+			);
+			fileSystemSynchronizedGroups = (
+				B10C00000000000000000002 /* Shared */,
+				B10C00000000000000000004 /* ShareExtension */,
+			);
+			name = BlockerShare;
+			productName = BlockerShare;
+			productReference = B10C00000000000000000022;
+			productType = "com.apple.product-type.app-extension";
+		};
+		B10C0000000000000000003E /* Blocker */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B10C0000000000000000003A;
+			buildPhases = (
+				B10C0000000000000000003B,
+				B10C0000000000000000003C,
+				B10C0000000000000000003D,
+				B10C00000000000000000036 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B10C0000000000000000002C,
+				B10C0000000000000000002F,
+				B10C00000000000000000032,
+				B10C00000000000000000035,
 			);
 			fileSystemSynchronizedGroups = (
 				B10C00000000000000000001 /* App */,
@@ -259,64 +305,68 @@
 			);
 			name = Blocker;
 			productName = Blocker;
-			productReference = B10C00000000000000000009;
+			productReference = B10C00000000000000000037;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		B10C00000000000000000039 /* Project object */ = {
+		B10C00000000000000000045 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 2700;
 				LastUpgradeCheck = 2700;
 				TargetAttributes = {
-					B10C00000000000000000032 = {
+					B10C0000000000000000003E = {
 						CreatedOnToolsVersion = 27.2;
 					};
-					B10C00000000000000000013 = {
+					B10C00000000000000000011 = {
 						CreatedOnToolsVersion = 27.2;
 					};
-					B10C0000000000000000001A = {
+					B10C00000000000000000019 = {
 						CreatedOnToolsVersion = 27.2;
 					};
 					B10C00000000000000000021 = {
 						CreatedOnToolsVersion = 27.2;
 					};
+					B10C00000000000000000029 = {
+						CreatedOnToolsVersion = 27.2;
+					};
 				};
 			};
-			buildConfigurationList = B10C00000000000000000035;
+			buildConfigurationList = B10C00000000000000000041;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = B10C00000000000000000038;
+			mainGroup = B10C00000000000000000044;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = B10C00000000000000000037;
+			productRefGroup = B10C00000000000000000043;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				B10C00000000000000000032,
-				B10C00000000000000000013,
-				B10C0000000000000000001A,
+				B10C0000000000000000003E,
+				B10C00000000000000000011,
+				B10C00000000000000000019,
 				B10C00000000000000000021,
+				B10C00000000000000000029,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		B10C00000000000000000012 /* Resources */ = {
+		B10C00000000000000000010 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B10C00000000000000000019 /* Resources */ = {
+		B10C00000000000000000018 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -330,7 +380,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B10C00000000000000000031 /* Resources */ = {
+		B10C00000000000000000028 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B10C0000000000000000003D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -340,14 +397,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		B10C00000000000000000010 /* Sources */ = {
+		B10C0000000000000000000E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B10C00000000000000000017 /* Sources */ = {
+		B10C00000000000000000016 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -361,7 +418,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B10C0000000000000000002F /* Sources */ = {
+		B10C00000000000000000026 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B10C0000000000000000003B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -371,28 +435,36 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		B10C00000000000000000027 /* PBXTargetDependency */ = {
+		B10C0000000000000000002C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = B10C00000000000000000013;
-			targetProxy = B10C00000000000000000026;
+			target = B10C00000000000000000011;
+			targetProxy = B10C0000000000000000002B;
 		};
-		B10C00000000000000000029 /* PBXTargetDependency */ = {
+		B10C0000000000000000002F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = B10C0000000000000000001A;
-			targetProxy = B10C00000000000000000028;
+			target = B10C00000000000000000019;
+			targetProxy = B10C0000000000000000002E;
 		};
-		B10C0000000000000000002B /* PBXTargetDependency */ = {
+		B10C00000000000000000032 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = B10C00000000000000000021;
-			targetProxy = B10C0000000000000000002A;
+			targetProxy = B10C00000000000000000031;
+		};
+		B10C00000000000000000035 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			platformFilter = ios;
+			target = B10C00000000000000000029;
+			targetProxy = B10C00000000000000000034;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		B10C0000000000000000000D /* Debug */ = {
+		B10C0000000000000000000B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_ENTITLEMENTS = Config/Extension.entitlements;
+				"CODE_SIGN_ENTITLEMENTS[sdk=macosx*]" = "Config/Extension-macOS.entitlements";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Config/Extension-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Ads;
@@ -401,17 +473,27 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).blocker.ads";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
 				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 			};
 			name = Debug;
 		};
-		B10C0000000000000000000E /* Release */ = {
+		B10C0000000000000000000C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_ENTITLEMENTS = Config/Extension.entitlements;
+				"CODE_SIGN_ENTITLEMENTS[sdk=macosx*]" = "Config/Extension-macOS.entitlements";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Config/Extension-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Ads;
@@ -420,17 +502,27 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).blocker.ads";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
 				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 			};
 			name = Release;
 		};
-		B10C00000000000000000014 /* Debug */ = {
+		B10C00000000000000000013 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_ENTITLEMENTS = Config/Extension.entitlements;
+				"CODE_SIGN_ENTITLEMENTS[sdk=macosx*]" = "Config/Extension-macOS.entitlements";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Config/Extension-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Trackers;
@@ -439,17 +531,27 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).blocker.privacy";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
 				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 			};
 			name = Debug;
 		};
-		B10C00000000000000000015 /* Release */ = {
+		B10C00000000000000000014 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_ENTITLEMENTS = Config/Extension.entitlements;
+				"CODE_SIGN_ENTITLEMENTS[sdk=macosx*]" = "Config/Extension-macOS.entitlements";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Config/Extension-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Trackers;
@@ -458,10 +560,18 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).blocker.privacy";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
 				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 			};
 			name = Release;
 		};
@@ -469,6 +579,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_ENTITLEMENTS = Config/Extension.entitlements;
+				"CODE_SIGN_ENTITLEMENTS[sdk=macosx*]" = "Config/Extension-macOS.entitlements";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Config/Extension-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Annoyances;
@@ -477,10 +589,18 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).blocker.annoyances";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
 				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 			};
 			name = Debug;
 		};
@@ -488,6 +608,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_ENTITLEMENTS = Config/Extension.entitlements;
+				"CODE_SIGN_ENTITLEMENTS[sdk=macosx*]" = "Config/Extension-macOS.entitlements";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Config/Extension-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Annoyances;
@@ -496,18 +618,70 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).blocker.annoyances";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
 				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 			};
 			name = Release;
 		};
-		B10C0000000000000000002C /* Debug */ = {
+		B10C00000000000000000023 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_ENTITLEMENTS = Config/App.entitlements;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Config/Share-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Ad Nope";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).blocker.share";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+			};
+			name = Debug;
+		};
+		B10C00000000000000000024 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_ENTITLEMENTS = Config/App.entitlements;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Config/Share-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Ad Nope";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).blocker.share";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+			};
+			name = Release;
+		};
+		B10C00000000000000000038 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Config/App.entitlements;
+				"CODE_SIGN_ENTITLEMENTS[sdk=macosx*]" = "Config/App-macOS.entitlements";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Config/App-Info.plist";
@@ -522,17 +696,27 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).blocker";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 			};
 			name = Debug;
 		};
-		B10C0000000000000000002D /* Release */ = {
+		B10C00000000000000000039 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Config/App.entitlements;
+				"CODE_SIGN_ENTITLEMENTS[sdk=macosx*]" = "Config/App-macOS.entitlements";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Config/App-Info.plist";
@@ -547,13 +731,21 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).blocker";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 			};
 			name = Release;
 		};
-		B10C00000000000000000033 /* Debug */ = {
+		B10C0000000000000000003F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -561,18 +753,19 @@
 				BUNDLE_ID_PREFIX = com.dcantor;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_ENTITLEMENTS = Config/Blocker.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = WQ68C644CG;
+				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
-				MARKETING_VERSION = 1.0;
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
+				MARKETING_VERSION = 1.1;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
@@ -582,7 +775,7 @@
 			};
 			name = Debug;
 		};
-		B10C00000000000000000034 /* Release */ = {
+		B10C00000000000000000040 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -590,17 +783,18 @@
 				BUNDLE_ID_PREFIX = com.dcantor;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_ENTITLEMENTS = Config/Blocker.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = WQ68C644CG;
+				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
-				MARKETING_VERSION = 1.0;
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
+				MARKETING_VERSION = 1.1;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_VERSION = 5.0;
@@ -612,20 +806,20 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		B10C0000000000000000000F /* Build configuration list for PBXNativeTarget "BlockerAds" */ = {
+		B10C0000000000000000000D /* Build configuration list for PBXNativeTarget "BlockerAds" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				B10C0000000000000000000D /* Debug */,
-				B10C0000000000000000000E /* Release */,
+				B10C0000000000000000000B /* Debug */,
+				B10C0000000000000000000C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B10C00000000000000000016 /* Build configuration list for PBXNativeTarget "BlockerPrivacy" */ = {
+		B10C00000000000000000015 /* Build configuration list for PBXNativeTarget "BlockerPrivacy" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				B10C00000000000000000014 /* Debug */,
-				B10C00000000000000000015 /* Release */,
+				B10C00000000000000000013 /* Debug */,
+				B10C00000000000000000014 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -639,25 +833,34 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B10C0000000000000000002E /* Build configuration list for PBXNativeTarget "Blocker" */ = {
+		B10C00000000000000000025 /* Build configuration list for PBXNativeTarget "BlockerShare" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				B10C0000000000000000002C /* Debug */,
-				B10C0000000000000000002D /* Release */,
+				B10C00000000000000000023 /* Debug */,
+				B10C00000000000000000024 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B10C00000000000000000035 /* Build configuration list for PBXProject "Blocker" */ = {
+		B10C0000000000000000003A /* Build configuration list for PBXNativeTarget "Blocker" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				B10C00000000000000000033 /* Debug */,
-				B10C00000000000000000034 /* Release */,
+				B10C00000000000000000038 /* Debug */,
+				B10C00000000000000000039 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B10C00000000000000000041 /* Build configuration list for PBXProject "Blocker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B10C0000000000000000003F /* Debug */,
+				B10C00000000000000000040 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = B10C00000000000000000039 /* Project object */;
+	rootObject = B10C00000000000000000045 /* Project object */;
 }

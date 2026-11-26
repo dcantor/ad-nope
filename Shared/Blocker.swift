@@ -71,4 +71,10 @@ enum RuleStorage {
     }
 
     static var sharedDefaults: UserDefaults? { UserDefaults(suiteName: appGroupID) }
+
+    /// Rule count of the downloaded base list (from the manifest), in sharedDefaults.
+    static func baseRulesKey(_ blocker: Blocker) -> String { "baseRules.\(blocker.rawValue)" }
+
+    /// Rule count Safari currently has for the blocker (base + allowlist), in sharedDefaults.
+    static func activeRulesKey(_ blocker: Blocker) -> String { "rules.\(blocker.rawValue)" }
 }

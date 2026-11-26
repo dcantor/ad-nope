@@ -32,20 +32,20 @@ final class FilterStore {
     }
 
     private let defaults: UserDefaults
-    private let appBundleID = Bundle.main.bundleIdentifier ?? ""
+    private let appBundleID = AppIdentity.appBundleID
+    private var cloudObserver: NSObjectProtocol?
 
     private enum Keys {
         static let serverURL = "serverURL"
-        static let allowlist = "allowlist"
         static let lastChecked = "lastChecked"
         static func sha(_ b: Blocker) -> String { "sha.\(b.rawValue)" }
-        static func rules(_ b: Blocker) -> String { "rules.\(b.rawValue)" }
+        static func rules(_ b: Blocker) -> String { RuleStorage.activeRulesKey(b) }
         static func updated(_ b: Blocker) -> String { "updated.\(b.rawValue)" }
     }
 
     private init() {
         defaults = RuleStorage.sharedDefaults ?? .standard
-        allowlist = defaults.stringArray(forKey: Keys.allowlist) ?? []
+        allowlist = Allowlist.domains
         serverURL = defaults.string(forKey: Keys.serverURL) ?? Self.defaultServerURL
         lastChecked = defaults.object(forKey: Keys.lastChecked) as? Date
         for b in Blocker.allCases {
@@ -99,7 +99,7 @@ final class FilterStore {
                 let data = try await fetch(base.appendingPathComponent(entry.file))
                 let digest = SHA256.hash(data: data).map { String(format: "%02x", $0) }.joined()
                 guard digest == entry.sha256 else { throw UpdateError.checksum(b.title) }
-                try await install(data, for: b)
+                try await install(data, rules: entry.rules, for: b)
                 defaults.set(entry.sha256, forKey: Keys.sha(b))
                 defaults.set(Date(), forKey: Keys.updated(b))
                 statuses[b, default: Status()].updated = Date()
@@ -113,15 +113,18 @@ final class FilterStore {
 
     /// Saves a newly downloaded list and applies it. If Safari refuses to
     /// compile it, the previous list is restored so the blocker keeps working.
-    private func install(_ data: Data, for b: Blocker) async throws {
-        guard let baseURL = RuleStorage.baseURL(for: b) else { throw UpdateError.noAppGroup }
+    private func install(_ data: Data, rules: Int, for b: Blocker) async throws {
+        guard let baseURL = RuleStorage.baseURL(for: b) else { throw RuleError.noAppGroup }
         try FileManager.default.createDirectory(at: baseURL.deletingLastPathComponent(), withIntermediateDirectories: true)
         let previous = try? Data(contentsOf: baseURL)
+        let previousRules = defaults.object(forKey: RuleStorage.baseRulesKey(b))
         try data.write(to: baseURL, options: .atomic)
+        defaults.set(rules, forKey: RuleStorage.baseRulesKey(b))
         do {
             try await apply(b)
         } catch {
             if let previous { try? previous.write(to: baseURL, options: .atomic) } else { try? FileManager.default.removeItem(at: baseURL) }
+            defaults.set(previousRules, forKey: RuleStorage.baseRulesKey(b))
             try? await apply(b)
             throw UpdateError.safariRejected(b.title, error.localizedDescription)
         }
@@ -130,22 +133,45 @@ final class FilterStore {
     // MARK: - Allowlist
 
     func allow(_ input: String) async -> Bool {
-        guard let domain = Self.normalizeDomain(input) else { return false }
+        guard let domain = Allowlist.normalize(input) else { return false }
         if !allowlist.contains(domain) {
-            allowlist.append(domain)
-            allowlist.sort()
-            await allowlistChanged()
+            allowlist = Allowlist.add(domain)
+            await applyAll()
         }
         return true
     }
 
     func disallow(_ domains: [String]) async {
-        allowlist.removeAll { domains.contains($0) }
-        await allowlistChanged()
+        allowlist = Allowlist.remove(domains)
+        await applyAll()
     }
 
-    private func allowlistChanged() async {
-        defaults.set(allowlist, forKey: Keys.allowlist)
+    /// Picks up changes made elsewhere: the Share extension (same App Group) or
+    /// another device (iCloud). Re-applies the blockers only if something changed.
+    func syncAllowlist() async {
+        let cloudChanged = Allowlist.syncFromCloud()
+        let current = Allowlist.domains
+        // The Share extension may have updated the blockers (and their counts) already.
+        for b in Blocker.allCases {
+            if let n = defaults.object(forKey: Keys.rules(b)) as? Int { statuses[b, default: Status()].rules = n }
+        }
+        guard cloudChanged || current != allowlist else { return }
+        allowlist = current
+        await applyAll()
+    }
+
+    /// Re-syncs whenever iCloud reports a change from another device.
+    func observeCloud() {
+        guard cloudObserver == nil else { return }
+        cloudObserver = NotificationCenter.default.addObserver(
+            forName: NSUbiquitousKeyValueStore.didChangeExternallyNotification,
+            object: NSUbiquitousKeyValueStore.default, queue: .main
+        ) { [weak self] _ in
+            Task { await self?.syncAllowlist() }
+        }
+    }
+
+    private func applyAll() async {
         lastError = nil
         do {
             for b in Blocker.allCases { try await apply(b) }
@@ -154,65 +180,26 @@ final class FilterStore {
         }
     }
 
-    /// "https://www.Example.com/page" -> "example.com"
-    nonisolated static func normalizeDomain(_ input: String) -> String? {
-        var s = input.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
-        if let host = URL(string: s.contains("://") ? s : "https://\(s)")?.host() { s = host }
-        if s.hasPrefix("www.") { s.removeFirst(4) }
-        let allowed = Set("abcdefghijklmnopqrstuvwxyz0123456789.-")
-        guard s.contains("."), !s.hasPrefix("."), !s.hasSuffix("."), s.allSatisfy(allowed.contains) else { return nil }
-        return s
-    }
-
     // MARK: - Composing what Safari loads
 
-    /// Writes base list + allowlist to the file the extension hands Safari, then reloads it.
     private func apply(_ b: Blocker) async throws {
-        guard let base = RuleStorage.baseURL(for: b), let active = RuleStorage.activeURL(for: b) else {
-            throw UpdateError.noAppGroup
+        // RuleComposer also saves the count, so the Share extension's updates show up here.
+        if let count = try await RuleComposer.apply(b, allowlist: allowlist) {
+            statuses[b, default: Status()].rules = count
         }
-        let source = FileManager.default.fileExists(atPath: base.path) ? base : bundledSeed(for: b)
-        guard let source else { throw UpdateError.missingSeed(b.title) }
-        let allow = allowlist
-        // Parsing a full list can take a moment; keep it off the main thread.
-        let count = try await Task.detached(priority: .userInitiated) {
-            try Self.compose(source: source, allowlist: allow, to: active)
-        }.value
-        try await SFContentBlockerManager.reloadContentBlocker(withIdentifier: b.extensionBundleID(appBundleID: appBundleID))
-        statuses[b, default: Status()].rules = count
-        defaults.set(count, forKey: Keys.rules(b))
-    }
-
-    nonisolated private static func compose(source: URL, allowlist: [String], to target: URL) throws -> Int {
-        let data = try Data(contentsOf: source)
-        guard var rules = try JSONSerialization.jsonObject(with: data) as? [Any] else { throw UpdateError.badList }
-        // Allowlist rules go last: ignore-previous-rules only cancels rules above it.
-        for domain in allowlist {
-            rules.append([
-                "trigger": ["url-filter": ".*", "if-domain": ["*\(domain)"]],
-                "action": ["type": "ignore-previous-rules"],
-            ])
-        }
-        try FileManager.default.createDirectory(at: target.deletingLastPathComponent(), withIntermediateDirectories: true)
-        let out = try JSONSerialization.data(withJSONObject: rules, options: [.withoutEscapingSlashes])
-        try out.write(to: target, options: .atomic)
-        return rules.count
-    }
-
-    /// The starter list inside the extension's own bundle, used until the first download.
-    private func bundledSeed(for b: Blocker) -> URL? {
-        let id = b.extensionBundleID(appBundleID: appBundleID)
-        guard let plugins = Bundle.main.builtInPlugInsURL,
-              let items = try? FileManager.default.contentsOfDirectory(at: plugins, includingPropertiesForKeys: nil)
-        else { return nil }
-        return items.lazy
-            .compactMap(Bundle.init(url:))
-            .first { $0.bundleIdentifier == id }?
-            .url(forResource: "blockerList", withExtension: "json")
     }
 
     /// Applies the bundled starter lists on first launch so the allowlist and rule counts work before any download.
     func bootstrap() async {
+        // Installs from before baseRules existed: count the downloaded lists once.
+        for b in Blocker.allCases where defaults.object(forKey: RuleStorage.baseRulesKey(b)) == nil {
+            if let url = RuleStorage.baseURL(for: b), let data = try? Data(contentsOf: url),
+               let rules = try? JSONSerialization.jsonObject(with: data) as? [Any] {
+                defaults.set(rules.count, forKey: RuleStorage.baseRulesKey(b))
+            }
+        }
+        observeCloud()
+        await syncAllowlist()
         guard Blocker.allCases.contains(where: { statuses[$0]?.rules == nil }) else { return }
         for b in Blocker.allCases where statuses[b]?.rules == nil {
             try? await apply(b)
@@ -241,17 +228,12 @@ private struct Manifest: Decodable {
 }
 
 enum UpdateError: LocalizedError {
-    case noAppGroup, badList
-    case missingSeed(String)
     case checksum(String)
     case http(String, Int)
     case safariRejected(String, String)
 
     var errorDescription: String? {
         switch self {
-        case .noAppGroup: "The shared App Group container isn't available. Check the App Group entitlement."
-        case .badList: "A rule list isn't a JSON array."
-        case .missingSeed(let name): "No bundled starter list for \(name)."
         case .checksum(let name): "\(name) list failed its checksum; kept the previous version."
         case .http(let file, let code): "Couldn't download \(file) (HTTP \(code))."
         case .safariRejected(let name, let why): "Safari rejected the new \(name) list, so the previous one was kept. \(why)"
