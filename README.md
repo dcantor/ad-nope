@@ -47,15 +47,20 @@ you can turn categories on and off separately in Settings.
    "Ad Nope" (the `INFOPLIST_KEY_CFBundleDisplayName` setting).
 3. On the device, go to **Settings › Apps › Safari › Extensions** and turn on
    Ads, Trackers and Annoyances (listed under Ad Nope).
-4. Until you set a filter server, only the small starter lists are active.
+4. On first launch the app downloads the full lists from
+   `https://dcantor.github.io/ad-nope/` (`FilterStore.defaultServerURL`).
+   Until then, the small starter lists bundled with the app are active.
 
 ## Publish the full lists
+
+The **Build filters** workflow rebuilds the lists daily and publishes them to
+GitHub Pages at `https://dcantor.github.io/ad-nope/`. To publish from a fork:
 
 1. Push this folder to a GitHub repo.
 2. In the repo, go to **Settings › Pages › Source** and choose **GitHub Actions**.
 3. Run the **Build filters** workflow (Actions tab), or wait for the daily run.
-4. In the app, set **Filter server** to `https://<user>.github.io/<repo>/`
-   and tap **Update Filters Now**.
+4. Change `FilterStore.defaultServerURL`, or set **Filter server** in the app,
+   to `https://<user>.github.io/<repo>/`.
 
 Or build locally and host `dist/` anywhere:
 

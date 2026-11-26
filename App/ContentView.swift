@@ -69,7 +69,7 @@ struct ContentView: View {
                 }
 
                 Section {
-                    TextField("https://you.github.io/safari-adblock/", text: $store.serverURL)
+                    TextField(FilterStore.defaultServerURL, text: $store.serverURL)
                         .textInputAutocapitalization(.never)
                         .autocorrectionDisabled()
                         .keyboardType(.URL)

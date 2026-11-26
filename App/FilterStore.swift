@@ -12,6 +12,10 @@ import SafariServices
 final class FilterStore {
     static let shared = FilterStore()
 
+    /// Where the daily GitHub Action publishes the lists (see .github/workflows/filters.yml).
+    /// Used until the user enters a different server.
+    static let defaultServerURL = "https://dcantor.github.io/ad-nope/"
+
     struct Status {
         var enabled: Bool?   // nil = unknown (for example, the simulator before Safari has loaded it)
         var rules: Int?
@@ -42,7 +46,7 @@ final class FilterStore {
     private init() {
         defaults = RuleStorage.sharedDefaults ?? .standard
         allowlist = defaults.stringArray(forKey: Keys.allowlist) ?? []
-        serverURL = defaults.string(forKey: Keys.serverURL) ?? ""
+        serverURL = defaults.string(forKey: Keys.serverURL) ?? Self.defaultServerURL
         lastChecked = defaults.object(forKey: Keys.lastChecked) as? Date
         for b in Blocker.allCases {
             statuses[b] = Status(rules: defaults.object(forKey: Keys.rules(b)) as? Int,
