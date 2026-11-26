@@ -1,0 +1,38 @@
+[Adblock Plus 2.0]
+! A hand-written sample covering each syntax the converter handles.
+! Used by tools/fixtures/filters.test.json; no network needed.
+||doubleclick.net^
+||ads.example.com^$third-party
+||cdn.example.org/ads/*.js$script,domain=news.example|blog.example
+||tracker.example^$~third-party,image
+/banner/ad_*.gif
+|https://pixel.example/collect?
+||analytics.example^$xmlhttprequest,ping
+||frames.example^$subdocument
+||nostyle.example^$~stylesheet,~font
+@@||doubleclick.net/allowed.js$script
+@@||trusted-site.example^$document
+||ads.example.net^$domain=~safe.example
+##.ad-banner
+##div[id^="google_ads_"]
+###sponsored-box
+##.has-ad:has(> .promo)
+news.example,blog.example##.sponsored-post
+~shop.example##.promo-strip
+news.example#@#.ad-banner
+example.*##.wildcard-tld
+##.text-ad:has-text(Sponsored)
+example.com#?#.extended
+example.com##+js(abort-on-property-read, ads)
+/^https?:\/\/regex\.example\//
+||redirect.example^$redirect=noopjs
+||bad.example^
+||bad.example^$badfilter
+!#if env_safari
+||only-in-if-block.example^
+!#endif
+0.0.0.0 hosts-entry.example
+# a hosts-file comment
+@@||nogeneric.example^$generichide
+@@||nohide.example^$elemhide
+nohide.example##.site-specific

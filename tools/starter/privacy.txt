@@ -1,0 +1,7 @@
+! Tiny starter list bundled in the app so it blocks something before the first update.
+||google-analytics.com^
+||scorecardresearch.com^
+||quantserve.com^
+||hotjar.com^$third-party
+||clarity.ms^$third-party
+||facebook.com/tr^

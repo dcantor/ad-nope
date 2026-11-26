@@ -1,0 +1,4 @@
+! Tiny starter list bundled in the app so it blocks something before the first update.
+###onetrust-banner-sdk
+###CybotCookiebotDialog
+##.fc-consent-root

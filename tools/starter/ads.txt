@@ -1,0 +1,13 @@
+! Tiny starter list bundled in the app so it blocks something before the first update.
+||doubleclick.net^
+||googlesyndication.com^
+||googleadservices.com^
+||adservice.google.com^
+||amazon-adsystem.com^
+||adnxs.com^
+||taboola.com^$third-party
+||outbrain.com^$third-party
+||criteo.com^$third-party
+##.adsbygoogle
+##ins.adsbygoogle
+##div[id^="div-gpt-ad"]

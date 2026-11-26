@@ -1,0 +1,7 @@
+{
+  "blockers": {
+    "ads":        { "seedFolder": "Ads",        "lists": [{ "name": "starter", "url": "tools/starter/ads.txt" }] },
+    "privacy":    { "seedFolder": "Privacy",    "lists": [{ "name": "starter", "url": "tools/starter/privacy.txt" }] },
+    "annoyances": { "seedFolder": "Annoyances", "lists": [{ "name": "starter", "url": "tools/starter/annoyances.txt" }] }
+  }
+}

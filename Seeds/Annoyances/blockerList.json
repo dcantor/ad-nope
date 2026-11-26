@@ -1,0 +1,1 @@
+[{"trigger":{"url-filter":".*"},"action":{"type":"css-display-none","selector":"#onetrust-banner-sdk, #CybotCookiebotDialog, .fc-consent-root"}}]

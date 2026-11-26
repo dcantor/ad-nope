@@ -1,0 +1,8 @@
+{
+  "blockers": {
+    "ads": {
+      "seedFolder": "Ads",
+      "lists": [{ "name": "sample", "url": "tools/fixtures/sample.txt" }]
+    }
+  }
+}
