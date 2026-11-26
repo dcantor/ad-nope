@@ -79,7 +79,7 @@ struct ContentView: View {
                     Text("Where tools/build_filters.py output is published (manifest.json plus one file per blocker). Checked about once a day.")
                 }
             }
-            .navigationTitle("Blocker")
+            .navigationTitle("Ad Nope")
             .refreshable { await store.updateFilters(); await store.refreshStates() }
         }
         .task {

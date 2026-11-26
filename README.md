@@ -1,4 +1,4 @@
-# Blocker: a Safari content blocker for iPhone and iPad
+# Ad Nope: a Safari content blocker for iPhone and iPad
 
 A small, private ad and tracker blocker for Safari. It's a Safari **Content
 Blocker**: the app gives Safari a list of rules, Safari applies them itself,
@@ -42,9 +42,11 @@ you can turn categories on and off separately in Settings.
 1. Open `Blocker.xcodeproj`. Bundle IDs come from two project-level build
    settings: `BUNDLE_ID_PREFIX` (`com.dcantor`) and `APP_GROUP_ID`
    (`group.com.dcantor.blocker`). Signing is automatic with your team.
-2. Run the **Blocker** scheme on your iPhone or iPad.
+2. Run the **Blocker** scheme on your iPhone or iPad. The project, scheme and
+   bundle IDs are still called Blocker internally; only the displayed name is
+   "Ad Nope" (the `INFOPLIST_KEY_CFBundleDisplayName` setting).
 3. On the device, go to **Settings › Apps › Safari › Extensions** and turn on
-   Blocker Ads, Blocker Trackers and Blocker Annoyances.
+   Ads, Trackers and Annoyances (listed under Ad Nope).
 4. Until you set a filter server, only the small starter lists are active.
 
 ## Publish the full lists
