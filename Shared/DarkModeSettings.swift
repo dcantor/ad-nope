@@ -1,0 +1,48 @@
+import Foundation
+
+/// Settings for Extras › Dark mode for websites. Stored in the App Group so the
+/// Ad Nope Dark web extension's native handler can read them.
+struct DarkModeSettings: Equatable {
+    enum When: String, CaseIterable, Identifiable {
+        case matchDevice = "system"  // only while the iPhone, iPad or Mac is in dark mode
+        case always = "always"
+        var id: String { rawValue }
+        var title: String {
+            switch self {
+            case .matchDevice: "When my device is in dark mode"
+            case .always: "Always"
+            }
+        }
+    }
+
+    var enabled = false
+    var when: When = .matchDevice
+    /// Sites that are never darkened (and their subdomains).
+    var excluded: [String] = []
+
+    private enum Keys {
+        static let enabled = "dark.enabled"
+        static let when = "dark.when"
+        static let excluded = "dark.excluded"
+    }
+
+    static func load() -> DarkModeSettings {
+        let d = RuleStorage.sharedDefaults
+        return DarkModeSettings(
+            enabled: d?.bool(forKey: Keys.enabled) ?? false,
+            when: When(rawValue: d?.string(forKey: Keys.when) ?? "") ?? .matchDevice,
+            excluded: d?.stringArray(forKey: Keys.excluded) ?? [])
+    }
+
+    func save() {
+        let d = RuleStorage.sharedDefaults
+        d?.set(enabled, forKey: Keys.enabled)
+        d?.set(when.rawValue, forKey: Keys.when)
+        d?.set(excluded, forKey: Keys.excluded)
+    }
+
+    /// What the web extension receives. Contains only these settings, never anything about pages.
+    var message: [String: Any] {
+        ["enabled": enabled, "mode": when.rawValue, "excluded": excluded]
+    }
+}

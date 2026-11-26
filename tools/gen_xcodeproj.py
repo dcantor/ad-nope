@@ -11,6 +11,8 @@ Targets:
   BlockerAds/Privacy/   content-blocker extensions  iOS, iPadOS, macOS
     Annoyances
   BlockerShare          Safari Share menu extension iOS, iPadOS
+  BlockerDark           "Ad Nope Dark" Safari web   iOS, iPadOS, macOS
+                        extension (Extras)
 """
 
 import itertools
@@ -95,6 +97,7 @@ MULTI = {
 IOS_ONLY = {"SDKROOT": "iphoneos", "SUPPORTED_PLATFORMS": "iphoneos iphonesimulator"}
 
 g_app, g_shared, g_ext, g_share = synced("App"), synced("Shared"), synced("Extension"), synced("ShareExtension")
+g_dark = synced("DarkExtension")
 g_config, g_tools = synced("Config"), synced("tools")
 seeds = {n: synced(n) for n in ("Ads", "Privacy", "Annoyances")}
 
@@ -134,10 +137,28 @@ t_share = target("BlockerShare", {
     "SKIP_INSTALL": "YES",
 }, [g_shared + " /* Shared */", g_share + " /* ShareExtension */"], p_share, "com.apple.product-type.app-extension")
 
+# --- Ad Nope Dark: Safari web extension for Extras › Dark mode (multiplatform)
+p_dark = product("BlockerDark.appex", '"wrapper.app-extension"')
+t_dark = target("BlockerDark", {
+    **MULTI,
+    "APPLICATION_EXTENSION_API_ONLY": "YES",
+    "CODE_SIGN_ENTITLEMENTS": "Config/Extension.entitlements",
+    "CODE_SIGN_ENTITLEMENTS[sdk=macosx*]": "Config/Extension-macOS.entitlements",
+    "GENERATE_INFOPLIST_FILE": "YES",
+    "INFOPLIST_FILE": "Config/Dark-Info.plist",
+    "INFOPLIST_KEY_CFBundleDisplayName": "Ad Nope Dark",
+    "LD_RUNPATH_SEARCH_PATHS": ["$(inherited)", "@executable_path/Frameworks", "@executable_path/../../Frameworks"],
+    "LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]": ["$(inherited)", "@executable_path/../Frameworks", "@executable_path/../../../../Frameworks"],
+    "PRODUCT_BUNDLE_IDENTIFIER": "$(BUNDLE_ID_PREFIX).blocker.dark",
+    "PRODUCT_NAME": "$(TARGET_NAME)",
+    "SKIP_INSTALL": "YES",
+}, [g_shared + " /* Shared */", g_dark + " /* DarkExtension */"], p_dark, "com.apple.product-type.app-extension")
+
 # --- embed everything in the app; the Share extension only on iOS
 embed_files, deps = [], []
 for name, ref, tgt, ios_only in [*((f"Blocker{n}", p_ext[n], t_ext[n], False) for n in blockers),
-                                  ("BlockerShare", p_share, t_share, True)]:
+                                  ("BlockerShare", p_share, t_share, True),
+                                  ("BlockerDark", p_dark, t_dark, False)]:
     pf = "platformFilter = ios; " if ios_only else ""
     embed_files.append(add("PBXBuildFile", f"{name}.appex in Embed Foundation Extensions",
                            f"{{isa = PBXBuildFile; fileRef = {ref}; {pf}settings = {{ATTRIBUTES = (RemoveHeadersOnCopy, ); }}; }}"))
@@ -192,7 +213,7 @@ base = {
     "ENABLE_USER_SCRIPT_SANDBOXING": "YES",
     "IPHONEOS_DEPLOYMENT_TARGET": "18.0",
     "MACOSX_DEPLOYMENT_TARGET": "15.0",
-    "MARKETING_VERSION": "1.1",
+    "MARKETING_VERSION": "1.2",
     "SDKROOT": "iphoneos",
     "SWIFT_VERSION": "5.0",
     "TARGETED_DEVICE_FAMILY": "1,2",
@@ -207,11 +228,11 @@ proj_cl = config_list('Build configuration list for PBXProject "Blocker"', debug
 g_seeds = add("PBXGroup", "Seeds",
               f"{{\n\t\t\tisa = PBXGroup;\n\t\t\tchildren = {fmt_list([seeds[n] + f' /* {n} */' for n in seeds])};\n\t\t\tpath = Seeds;\n\t\t\tsourceTree = \"<group>\";\n\t\t}}")
 g_products = add("PBXGroup", "Products",
-                 f"{{\n\t\t\tisa = PBXGroup;\n\t\t\tchildren = {fmt_list([p_app, *p_ext.values(), p_share])};\n\t\t\tname = Products;\n\t\t\tsourceTree = \"<group>\";\n\t\t}}")
+                 f"{{\n\t\t\tisa = PBXGroup;\n\t\t\tchildren = {fmt_list([p_app, *p_ext.values(), p_share, p_dark])};\n\t\t\tname = Products;\n\t\t\tsourceTree = \"<group>\";\n\t\t}}")
 g_main = add("PBXGroup", "",
-             f"{{\n\t\t\tisa = PBXGroup;\n\t\t\tchildren = {fmt_list([g_app + ' /* App */', g_shared + ' /* Shared */', g_ext + ' /* Extension */', g_share + ' /* ShareExtension */', g_seeds + ' /* Seeds */', g_config + ' /* Config */', g_tools + ' /* tools */', g_products + ' /* Products */'])};\n\t\t\tsourceTree = \"<group>\";\n\t\t}}")
+             f"{{\n\t\t\tisa = PBXGroup;\n\t\t\tchildren = {fmt_list([g_app + ' /* App */', g_shared + ' /* Shared */', g_ext + ' /* Extension */', g_share + ' /* ShareExtension */', g_dark + ' /* DarkExtension */', g_seeds + ' /* Seeds */', g_config + ' /* Config */', g_tools + ' /* tools */', g_products + ' /* Products */'])};\n\t\t\tsourceTree = \"<group>\";\n\t\t}}")
 
-all_targets = [t_app, *t_ext.values(), t_share]
+all_targets = [t_app, *t_ext.values(), t_share, t_dark]
 attrs = "".join(f"\t\t\t\t\t{t} = {{\n\t\t\t\t\t\tCreatedOnToolsVersion = 27.2;\n\t\t\t\t\t}};\n" for t in all_targets)
 proj = add("PBXProject", "Project object",
            "{\n\t\t\tisa = PBXProject;\n\t\t\tattributes = {\n\t\t\t\tBuildIndependentTargetsInParallel = 1;\n\t\t\t\tLastSwiftUpdateCheck = 2700;\n\t\t\t\tLastUpgradeCheck = 2700;\n"

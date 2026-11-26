@@ -5,6 +5,7 @@ struct ContentView: View {
     @Environment(\.scenePhase) private var scenePhase
     @State private var newDomain = ""
     @State private var domainInvalid = false
+    @State private var darkSummary = DarkModeSettings.load().enabled ? "On" : "Off"
 
     var body: some View {
         @Bindable var store = store
@@ -71,6 +72,20 @@ struct ContentView: View {
                 }
 
                 Section {
+                    NavigationLink {
+                        DarkModeView()
+                    } label: {
+                        LabeledContent {
+                            Text(darkSummary)
+                        } label: {
+                            Label("Dark mode for websites", systemImage: "moon")
+                        }
+                    }
+                } header: {
+                    Text("Extras")
+                }
+
+                Section {
                     TextField(FilterStore.defaultServerURL, text: $store.serverURL)
                         .urlEntry()
                 } header: {
@@ -80,6 +95,7 @@ struct ContentView: View {
                 }
             }
             .navigationTitle("Ad Nope")
+            .onAppear { darkSummary = DarkModeSettings.load().enabled ? "On" : "Off" }  // also on returning from Extras
             .refreshable { await store.updateFilters(); await store.refreshStates() }
         }
         .task {
@@ -91,6 +107,7 @@ struct ContentView: View {
             // Pick up changes made while the app was in the background: blockers
             // switched on in Settings, sites allowed from the Share menu or on another device.
             if phase == .active {
+                darkSummary = DarkModeSettings.load().enabled ? "On" : "Off"
                 Task {
                     await store.syncAllowlist()
                     await store.refreshStates()
@@ -165,7 +182,7 @@ enum Platform {
     #endif
 }
 
-private extension View {
+extension View {
     /// Plain-text entry for domains and URLs: no capitals or autocorrect.
     func urlEntry() -> some View {
         #if os(iOS)

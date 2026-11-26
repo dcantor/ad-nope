@@ -7,54 +7,63 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B10C0000000000000000002A /* BlockerAds.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B10C0000000000000000000A; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		B10C0000000000000000002D /* BlockerPrivacy.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B10C00000000000000000012; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		B10C00000000000000000030 /* BlockerAnnoyances.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B10C0000000000000000001A; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		B10C00000000000000000033 /* BlockerShare.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B10C00000000000000000022; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		B10C00000000000000000033 /* BlockerAds.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B10C0000000000000000000B; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		B10C00000000000000000036 /* BlockerPrivacy.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B10C00000000000000000013; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		B10C00000000000000000039 /* BlockerAnnoyances.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B10C0000000000000000001B; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		B10C0000000000000000003C /* BlockerShare.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B10C00000000000000000023; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		B10C0000000000000000003F /* BlockerDark.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B10C0000000000000000002B; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		B10C0000000000000000002B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B10C00000000000000000045;
-			proxyType = 1;
-			remoteGlobalIDString = B10C00000000000000000011;
-			remoteInfo = BlockerAds;
-		};
-		B10C0000000000000000002E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B10C00000000000000000045;
-			proxyType = 1;
-			remoteGlobalIDString = B10C00000000000000000019;
-			remoteInfo = BlockerPrivacy;
-		};
-		B10C00000000000000000031 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B10C00000000000000000045;
-			proxyType = 1;
-			remoteGlobalIDString = B10C00000000000000000021;
-			remoteInfo = BlockerAnnoyances;
-		};
 		B10C00000000000000000034 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = B10C00000000000000000045;
+			containerPortal = B10C00000000000000000051;
 			proxyType = 1;
-			remoteGlobalIDString = B10C00000000000000000029;
+			remoteGlobalIDString = B10C00000000000000000012;
+			remoteInfo = BlockerAds;
+		};
+		B10C00000000000000000037 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B10C00000000000000000051;
+			proxyType = 1;
+			remoteGlobalIDString = B10C0000000000000000001A;
+			remoteInfo = BlockerPrivacy;
+		};
+		B10C0000000000000000003A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B10C00000000000000000051;
+			proxyType = 1;
+			remoteGlobalIDString = B10C00000000000000000022;
+			remoteInfo = BlockerAnnoyances;
+		};
+		B10C0000000000000000003D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B10C00000000000000000051;
+			proxyType = 1;
+			remoteGlobalIDString = B10C0000000000000000002A;
 			remoteInfo = BlockerShare;
+		};
+		B10C00000000000000000040 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B10C00000000000000000051;
+			proxyType = 1;
+			remoteGlobalIDString = B10C00000000000000000032;
+			remoteInfo = BlockerDark;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		B10C00000000000000000036 /* Embed Foundation Extensions */ = {
+		B10C00000000000000000042 /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				B10C0000000000000000002A,
-				B10C0000000000000000002D,
-				B10C00000000000000000030,
 				B10C00000000000000000033,
+				B10C00000000000000000036,
+				B10C00000000000000000039,
+				B10C0000000000000000003C,
+				B10C0000000000000000003F,
 			);
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -62,11 +71,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		B10C0000000000000000000A /* BlockerAds.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = BlockerAds.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		B10C00000000000000000012 /* BlockerPrivacy.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = BlockerPrivacy.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		B10C0000000000000000001A /* BlockerAnnoyances.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = BlockerAnnoyances.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		B10C00000000000000000022 /* BlockerShare.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = BlockerShare.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		B10C00000000000000000037 /* Blocker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Blocker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B10C0000000000000000000B /* BlockerAds.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = BlockerAds.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		B10C00000000000000000013 /* BlockerPrivacy.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = BlockerPrivacy.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		B10C0000000000000000001B /* BlockerAnnoyances.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = BlockerAnnoyances.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		B10C00000000000000000023 /* BlockerShare.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = BlockerShare.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		B10C0000000000000000002B /* BlockerDark.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = BlockerDark.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		B10C00000000000000000043 /* Blocker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Blocker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -90,27 +100,32 @@
 			path = ShareExtension;
 			sourceTree = "<group>";
 		};
-		B10C00000000000000000005 /* Config */ = {
+		B10C00000000000000000005 /* DarkExtension */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = DarkExtension;
+			sourceTree = "<group>";
+		};
+		B10C00000000000000000006 /* Config */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = Config;
 			sourceTree = "<group>";
 		};
-		B10C00000000000000000006 /* tools */ = {
+		B10C00000000000000000007 /* tools */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = tools;
 			sourceTree = "<group>";
 		};
-		B10C00000000000000000007 /* Ads */ = {
+		B10C00000000000000000008 /* Ads */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = Ads;
 			sourceTree = "<group>";
 		};
-		B10C00000000000000000008 /* Privacy */ = {
+		B10C00000000000000000009 /* Privacy */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = Privacy;
 			sourceTree = "<group>";
 		};
-		B10C00000000000000000009 /* Annoyances */ = {
+		B10C0000000000000000000A /* Annoyances */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = Annoyances;
 			sourceTree = "<group>";
@@ -118,35 +133,42 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		B10C0000000000000000000F /* Frameworks */ = {
+		B10C00000000000000000010 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B10C00000000000000000017 /* Frameworks */ = {
+		B10C00000000000000000018 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B10C0000000000000000001F /* Frameworks */ = {
+		B10C00000000000000000020 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B10C00000000000000000027 /* Frameworks */ = {
+		B10C00000000000000000028 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B10C0000000000000000003C /* Frameworks */ = {
+		B10C00000000000000000030 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B10C00000000000000000048 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -156,52 +178,54 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		B10C00000000000000000042 /* Seeds */ = {
+		B10C0000000000000000004E /* Seeds */ = {
 			isa = PBXGroup;
 			children = (
-				B10C00000000000000000007 /* Ads */,
-				B10C00000000000000000008 /* Privacy */,
-				B10C00000000000000000009 /* Annoyances */,
+				B10C00000000000000000008 /* Ads */,
+				B10C00000000000000000009 /* Privacy */,
+				B10C0000000000000000000A /* Annoyances */,
 			);
 			path = Seeds;
 			sourceTree = "<group>";
 		};
-		B10C00000000000000000043 /* Products */ = {
+		B10C0000000000000000004F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B10C00000000000000000037,
-				B10C0000000000000000000A,
-				B10C00000000000000000012,
-				B10C0000000000000000001A,
-				B10C00000000000000000022,
+				B10C00000000000000000043,
+				B10C0000000000000000000B,
+				B10C00000000000000000013,
+				B10C0000000000000000001B,
+				B10C00000000000000000023,
+				B10C0000000000000000002B,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		B10C00000000000000000044 = {
+		B10C00000000000000000050 = {
 			isa = PBXGroup;
 			children = (
 				B10C00000000000000000001 /* App */,
 				B10C00000000000000000002 /* Shared */,
 				B10C00000000000000000003 /* Extension */,
 				B10C00000000000000000004 /* ShareExtension */,
-				B10C00000000000000000042 /* Seeds */,
-				B10C00000000000000000005 /* Config */,
-				B10C00000000000000000006 /* tools */,
-				B10C00000000000000000043 /* Products */,
+				B10C00000000000000000005 /* DarkExtension */,
+				B10C0000000000000000004E /* Seeds */,
+				B10C00000000000000000006 /* Config */,
+				B10C00000000000000000007 /* tools */,
+				B10C0000000000000000004F /* Products */,
 			);
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		B10C00000000000000000011 /* BlockerAds */ = {
+		B10C00000000000000000012 /* BlockerAds */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B10C0000000000000000000D;
+			buildConfigurationList = B10C0000000000000000000E;
 			buildPhases = (
-				B10C0000000000000000000E,
 				B10C0000000000000000000F,
 				B10C00000000000000000010,
+				B10C00000000000000000011,
 			);
 			buildRules = (
 			);
@@ -210,20 +234,20 @@
 			fileSystemSynchronizedGroups = (
 				B10C00000000000000000002 /* Shared */,
 				B10C00000000000000000003 /* Extension */,
-				B10C00000000000000000007 /* Ads */,
+				B10C00000000000000000008 /* Ads */,
 			);
 			name = BlockerAds;
 			productName = BlockerAds;
-			productReference = B10C0000000000000000000A;
+			productReference = B10C0000000000000000000B;
 			productType = "com.apple.product-type.app-extension";
 		};
-		B10C00000000000000000019 /* BlockerPrivacy */ = {
+		B10C0000000000000000001A /* BlockerPrivacy */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B10C00000000000000000015;
+			buildConfigurationList = B10C00000000000000000016;
 			buildPhases = (
-				B10C00000000000000000016,
 				B10C00000000000000000017,
 				B10C00000000000000000018,
+				B10C00000000000000000019,
 			);
 			buildRules = (
 			);
@@ -232,20 +256,20 @@
 			fileSystemSynchronizedGroups = (
 				B10C00000000000000000002 /* Shared */,
 				B10C00000000000000000003 /* Extension */,
-				B10C00000000000000000008 /* Privacy */,
+				B10C00000000000000000009 /* Privacy */,
 			);
 			name = BlockerPrivacy;
 			productName = BlockerPrivacy;
-			productReference = B10C00000000000000000012;
+			productReference = B10C00000000000000000013;
 			productType = "com.apple.product-type.app-extension";
 		};
-		B10C00000000000000000021 /* BlockerAnnoyances */ = {
+		B10C00000000000000000022 /* BlockerAnnoyances */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B10C0000000000000000001D;
+			buildConfigurationList = B10C0000000000000000001E;
 			buildPhases = (
-				B10C0000000000000000001E,
 				B10C0000000000000000001F,
 				B10C00000000000000000020,
+				B10C00000000000000000021,
 			);
 			buildRules = (
 			);
@@ -254,20 +278,20 @@
 			fileSystemSynchronizedGroups = (
 				B10C00000000000000000002 /* Shared */,
 				B10C00000000000000000003 /* Extension */,
-				B10C00000000000000000009 /* Annoyances */,
+				B10C0000000000000000000A /* Annoyances */,
 			);
 			name = BlockerAnnoyances;
 			productName = BlockerAnnoyances;
-			productReference = B10C0000000000000000001A;
+			productReference = B10C0000000000000000001B;
 			productType = "com.apple.product-type.app-extension";
 		};
-		B10C00000000000000000029 /* BlockerShare */ = {
+		B10C0000000000000000002A /* BlockerShare */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B10C00000000000000000025;
+			buildConfigurationList = B10C00000000000000000026;
 			buildPhases = (
-				B10C00000000000000000026,
 				B10C00000000000000000027,
 				B10C00000000000000000028,
+				B10C00000000000000000029,
 			);
 			buildRules = (
 			);
@@ -279,25 +303,47 @@
 			);
 			name = BlockerShare;
 			productName = BlockerShare;
-			productReference = B10C00000000000000000022;
+			productReference = B10C00000000000000000023;
 			productType = "com.apple.product-type.app-extension";
 		};
-		B10C0000000000000000003E /* Blocker */ = {
+		B10C00000000000000000032 /* BlockerDark */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B10C0000000000000000003A;
+			buildConfigurationList = B10C0000000000000000002E;
 			buildPhases = (
-				B10C0000000000000000003B,
-				B10C0000000000000000003C,
-				B10C0000000000000000003D,
-				B10C00000000000000000036 /* Embed Foundation Extensions */,
+				B10C0000000000000000002F,
+				B10C00000000000000000030,
+				B10C00000000000000000031,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				B10C0000000000000000002C,
-				B10C0000000000000000002F,
-				B10C00000000000000000032,
+			);
+			fileSystemSynchronizedGroups = (
+				B10C00000000000000000002 /* Shared */,
+				B10C00000000000000000005 /* DarkExtension */,
+			);
+			name = BlockerDark;
+			productName = BlockerDark;
+			productReference = B10C0000000000000000002B;
+			productType = "com.apple.product-type.app-extension";
+		};
+		B10C0000000000000000004A /* Blocker */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B10C00000000000000000046;
+			buildPhases = (
+				B10C00000000000000000047,
+				B10C00000000000000000048,
+				B10C00000000000000000049,
+				B10C00000000000000000042 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
 				B10C00000000000000000035,
+				B10C00000000000000000038,
+				B10C0000000000000000003B,
+				B10C0000000000000000003E,
+				B10C00000000000000000041,
 			);
 			fileSystemSynchronizedGroups = (
 				B10C00000000000000000001 /* App */,
@@ -305,89 +351,100 @@
 			);
 			name = Blocker;
 			productName = Blocker;
-			productReference = B10C00000000000000000037;
+			productReference = B10C00000000000000000043;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		B10C00000000000000000045 /* Project object */ = {
+		B10C00000000000000000051 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 2700;
 				LastUpgradeCheck = 2700;
 				TargetAttributes = {
-					B10C0000000000000000003E = {
+					B10C0000000000000000004A = {
 						CreatedOnToolsVersion = 27.2;
 					};
-					B10C00000000000000000011 = {
+					B10C00000000000000000012 = {
 						CreatedOnToolsVersion = 27.2;
 					};
-					B10C00000000000000000019 = {
+					B10C0000000000000000001A = {
 						CreatedOnToolsVersion = 27.2;
 					};
-					B10C00000000000000000021 = {
+					B10C00000000000000000022 = {
 						CreatedOnToolsVersion = 27.2;
 					};
-					B10C00000000000000000029 = {
+					B10C0000000000000000002A = {
+						CreatedOnToolsVersion = 27.2;
+					};
+					B10C00000000000000000032 = {
 						CreatedOnToolsVersion = 27.2;
 					};
 				};
 			};
-			buildConfigurationList = B10C00000000000000000041;
+			buildConfigurationList = B10C0000000000000000004D;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = B10C00000000000000000044;
+			mainGroup = B10C00000000000000000050;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = B10C00000000000000000043;
+			productRefGroup = B10C0000000000000000004F;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				B10C0000000000000000003E,
-				B10C00000000000000000011,
-				B10C00000000000000000019,
-				B10C00000000000000000021,
-				B10C00000000000000000029,
+				B10C0000000000000000004A,
+				B10C00000000000000000012,
+				B10C0000000000000000001A,
+				B10C00000000000000000022,
+				B10C0000000000000000002A,
+				B10C00000000000000000032,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		B10C00000000000000000010 /* Resources */ = {
+		B10C00000000000000000011 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B10C00000000000000000018 /* Resources */ = {
+		B10C00000000000000000019 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B10C00000000000000000020 /* Resources */ = {
+		B10C00000000000000000021 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B10C00000000000000000028 /* Resources */ = {
+		B10C00000000000000000029 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B10C0000000000000000003D /* Resources */ = {
+		B10C00000000000000000031 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B10C00000000000000000049 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -397,35 +454,42 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		B10C0000000000000000000E /* Sources */ = {
+		B10C0000000000000000000F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B10C00000000000000000016 /* Sources */ = {
+		B10C00000000000000000017 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B10C0000000000000000001E /* Sources */ = {
+		B10C0000000000000000001F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B10C00000000000000000026 /* Sources */ = {
+		B10C00000000000000000027 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B10C0000000000000000003B /* Sources */ = {
+		B10C0000000000000000002F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B10C00000000000000000047 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -435,31 +499,36 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		B10C0000000000000000002C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B10C00000000000000000011;
-			targetProxy = B10C0000000000000000002B;
-		};
-		B10C0000000000000000002F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B10C00000000000000000019;
-			targetProxy = B10C0000000000000000002E;
-		};
-		B10C00000000000000000032 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B10C00000000000000000021;
-			targetProxy = B10C00000000000000000031;
-		};
 		B10C00000000000000000035 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			platformFilter = ios;
-			target = B10C00000000000000000029;
+			target = B10C00000000000000000012;
 			targetProxy = B10C00000000000000000034;
+		};
+		B10C00000000000000000038 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B10C0000000000000000001A;
+			targetProxy = B10C00000000000000000037;
+		};
+		B10C0000000000000000003B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B10C00000000000000000022;
+			targetProxy = B10C0000000000000000003A;
+		};
+		B10C0000000000000000003E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			platformFilter = ios;
+			target = B10C0000000000000000002A;
+			targetProxy = B10C0000000000000000003D;
+		};
+		B10C00000000000000000041 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B10C00000000000000000032;
+			targetProxy = B10C00000000000000000040;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		B10C0000000000000000000B /* Debug */ = {
+		B10C0000000000000000000C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
@@ -488,7 +557,7 @@
 			};
 			name = Debug;
 		};
-		B10C0000000000000000000C /* Release */ = {
+		B10C0000000000000000000D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
@@ -517,7 +586,7 @@
 			};
 			name = Release;
 		};
-		B10C00000000000000000013 /* Debug */ = {
+		B10C00000000000000000014 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
@@ -546,7 +615,7 @@
 			};
 			name = Debug;
 		};
-		B10C00000000000000000014 /* Release */ = {
+		B10C00000000000000000015 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
@@ -575,7 +644,7 @@
 			};
 			name = Release;
 		};
-		B10C0000000000000000001B /* Debug */ = {
+		B10C0000000000000000001C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
@@ -604,7 +673,7 @@
 			};
 			name = Debug;
 		};
-		B10C0000000000000000001C /* Release */ = {
+		B10C0000000000000000001D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
@@ -633,7 +702,7 @@
 			};
 			name = Release;
 		};
-		B10C00000000000000000023 /* Debug */ = {
+		B10C00000000000000000024 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
@@ -654,7 +723,7 @@
 			};
 			name = Debug;
 		};
-		B10C00000000000000000024 /* Release */ = {
+		B10C00000000000000000025 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
@@ -675,7 +744,65 @@
 			};
 			name = Release;
 		};
-		B10C00000000000000000038 /* Debug */ = {
+		B10C0000000000000000002C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_ENTITLEMENTS = Config/Extension.entitlements;
+				"CODE_SIGN_ENTITLEMENTS[sdk=macosx*]" = "Config/Extension-macOS.entitlements";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Config/Dark-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Ad Nope Dark";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).blocker.dark";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+			};
+			name = Debug;
+		};
+		B10C0000000000000000002D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_ENTITLEMENTS = Config/Extension.entitlements;
+				"CODE_SIGN_ENTITLEMENTS[sdk=macosx*]" = "Config/Extension-macOS.entitlements";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Config/Dark-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Ad Nope Dark";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).blocker.dark";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+			};
+			name = Release;
+		};
+		B10C00000000000000000044 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -710,7 +837,7 @@
 			};
 			name = Debug;
 		};
-		B10C00000000000000000039 /* Release */ = {
+		B10C00000000000000000045 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -745,7 +872,7 @@
 			};
 			name = Release;
 		};
-		B10C0000000000000000003F /* Debug */ = {
+		B10C0000000000000000004B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -765,7 +892,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				MACOSX_DEPLOYMENT_TARGET = 15.0;
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
@@ -775,7 +902,7 @@
 			};
 			name = Debug;
 		};
-		B10C00000000000000000040 /* Release */ = {
+		B10C0000000000000000004C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -794,7 +921,7 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				MACOSX_DEPLOYMENT_TARGET = 15.0;
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_VERSION = 5.0;
@@ -806,61 +933,70 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		B10C0000000000000000000D /* Build configuration list for PBXNativeTarget "BlockerAds" */ = {
+		B10C0000000000000000000E /* Build configuration list for PBXNativeTarget "BlockerAds" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				B10C0000000000000000000B /* Debug */,
-				B10C0000000000000000000C /* Release */,
+				B10C0000000000000000000C /* Debug */,
+				B10C0000000000000000000D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B10C00000000000000000015 /* Build configuration list for PBXNativeTarget "BlockerPrivacy" */ = {
+		B10C00000000000000000016 /* Build configuration list for PBXNativeTarget "BlockerPrivacy" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				B10C00000000000000000013 /* Debug */,
-				B10C00000000000000000014 /* Release */,
+				B10C00000000000000000014 /* Debug */,
+				B10C00000000000000000015 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B10C0000000000000000001D /* Build configuration list for PBXNativeTarget "BlockerAnnoyances" */ = {
+		B10C0000000000000000001E /* Build configuration list for PBXNativeTarget "BlockerAnnoyances" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				B10C0000000000000000001B /* Debug */,
-				B10C0000000000000000001C /* Release */,
+				B10C0000000000000000001C /* Debug */,
+				B10C0000000000000000001D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B10C00000000000000000025 /* Build configuration list for PBXNativeTarget "BlockerShare" */ = {
+		B10C00000000000000000026 /* Build configuration list for PBXNativeTarget "BlockerShare" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				B10C00000000000000000023 /* Debug */,
-				B10C00000000000000000024 /* Release */,
+				B10C00000000000000000024 /* Debug */,
+				B10C00000000000000000025 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B10C0000000000000000003A /* Build configuration list for PBXNativeTarget "Blocker" */ = {
+		B10C0000000000000000002E /* Build configuration list for PBXNativeTarget "BlockerDark" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				B10C00000000000000000038 /* Debug */,
-				B10C00000000000000000039 /* Release */,
+				B10C0000000000000000002C /* Debug */,
+				B10C0000000000000000002D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B10C00000000000000000041 /* Build configuration list for PBXProject "Blocker" */ = {
+		B10C00000000000000000046 /* Build configuration list for PBXNativeTarget "Blocker" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				B10C0000000000000000003F /* Debug */,
-				B10C00000000000000000040 /* Release */,
+				B10C00000000000000000044 /* Debug */,
+				B10C00000000000000000045 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B10C0000000000000000004D /* Build configuration list for PBXProject "Blocker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B10C0000000000000000004B /* Debug */,
+				B10C0000000000000000004C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = B10C00000000000000000045 /* Project object */;
+	rootObject = B10C00000000000000000051 /* Project object */;
 }

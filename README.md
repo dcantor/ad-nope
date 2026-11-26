@@ -31,6 +31,8 @@ and the app never sees the pages you visit.
 | `Shared/Allowlist.swift` | Allowed sites: App Group storage mirrored to iCloud key-value storage |
 | `Extension/ContentBlockerRequestHandler.swift` | Shared by all three extensions; hands Safari a file URL |
 | `ShareExtension/` | Safari Share › Ad Nope: allow or re-block the current site (iPhone, iPad) |
+| `DarkExtension/` | Ad Nope Dark: optional Safari web extension for Extras › Dark mode for websites |
+| `Shared/DarkModeSettings.swift` | Dark-mode settings, shared by the app and the Dark extension |
 | `Seeds/{Ads,Privacy,Annoyances}/blockerList.json` | Tiny starter lists bundled in each extension for first launch |
 | `Config/` | Info.plists and entitlements (iOS and macOS variants) |
 | `tools/build_filters.py` | Filter-list → Safari JSON converter |
@@ -77,6 +79,28 @@ python3 tools/build_filters.py            # writes dist/, validated with WebKit
 python3 tools/build_filters.py --seed     # also refreshes the bundled starter lists
 swift tools/compile_check.swift dist/ads.json dist/privacy.json dist/annoyances.json
 ```
+
+## Extras
+
+**Dark mode for websites** (Extras › Dark mode for websites in the app) gives
+light-only sites a dark look. It's a separate, optional Safari web extension,
+**Ad Nope Dark**, because content blockers can only hide or block things, not
+change colors.
+
+- It inverts the page's colors with a hue rotation, so reds stay red and blues
+  stay blue, then flips images, video and embeds back. Sites that are already
+  dark are detected and left alone.
+- "When my device is in dark mode" follows the iPhone, iPad or Mac appearance;
+  "Always" darkens all the time. "Never darken" excludes sites.
+- Turn it on in Settings › Apps › Safari › Extensions › Ad Nope Dark (Mac:
+  Safari › Settings › Extensions), and allow it on all websites. Unlike the
+  blockers it needs permission to change web pages. It doesn't send anything
+  anywhere: the extension asks the app only for its settings.
+- Limitation: very saturated yellows and cyans in images come out slightly
+  muted, because CSS's `hue-rotate` isn't exactly reversible. Mid-tones,
+  including skin tones, are reproduced accurately.
+- Mac: Safari only loads web extensions from development-signed apps after
+  you turn on Develop › Developer Settings › Allow unsigned extensions.
 
 ## Things worth knowing
 
