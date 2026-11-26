@@ -1,14 +1,22 @@
 {
     "manifest_version": 3,
     "name": "Ad Nope Dark",
-    "description": "Gives light-only websites a dark look. Settings are in the Ad Nope app under Extras.",
-    "version": "1.0",
+    "description": "Gives light-only websites a dark look. Turn it off for a site from the toolbar; more settings in the Ad Nope app under Extras.",
+    "version": "1.1",
     "icons": {
         "48": "dark-icon-48.png",
         "96": "dark-icon-96.png",
         "128": "dark-icon-128.png",
         "256": "dark-icon-256.png",
         "512": "dark-icon-512.png"
+    },
+    "action": {
+        "default_popup": "popup.html",
+        "default_icon": {
+            "48": "dark-icon-48.png",
+            "96": "dark-icon-96.png",
+            "128": "dark-icon-128.png"
+        }
     },
     "background": {
         "scripts": ["background.js"],

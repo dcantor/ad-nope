@@ -88,14 +88,20 @@ light-only sites a dark look. It's a separate, optional Safari web extension,
 change colors.
 
 - It inverts the page's colors with a hue rotation, so reds stay red and blues
-  stay blue, then flips images, video and embeds back. Sites that are already
-  dark are detected and left alone.
-- "When my device is in dark mode" follows the iPhone, iPad or Mac appearance;
-  "Always" darkens all the time. "Never darken" excludes sites.
+  stay blue, then flips back the parts that should keep their real colors:
+  images and video, blocks that are already dark (a dark header stays dark),
+  and blocks where text sits on a large photo (hero tiles). Sites that are
+  already dark are left alone.
+- It's on as soon as you allow Ad Nope Dark in Safari; there's no second
+  switch in the app. "When my device is in dark mode" follows the iPhone,
+  iPad or Mac appearance; "Always" darkens all the time.
+- Safari's page menu (or toolbar on the Mac) has an **Ad Nope Dark** button
+  with "Darken this site" and an on/off switch. Changes apply immediately and
+  show up in the app's "Never darken" list.
 - Turn it on in Settings › Apps › Safari › Extensions › Ad Nope Dark (Mac:
   Safari › Settings › Extensions), and allow it on all websites. Unlike the
   blockers it needs permission to change web pages. It doesn't send anything
-  anywhere: the extension asks the app only for its settings.
+  anywhere: the extension only reads and changes its settings in the app.
 - Limitation: very saturated yellows and cyans in images come out slightly
   muted, because CSS's `hue-rotate` isn't exactly reversible. Mid-tones,
   including skin tones, are reproduced accurately.

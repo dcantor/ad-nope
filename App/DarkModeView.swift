@@ -15,7 +15,7 @@ struct DarkModeView: View {
                 }
                 .disabled(!settings.enabled)
             } footer: {
-                Text("Gives light-only websites a dark look by inverting their colors. Photos and videos keep their real colors, and sites that are already dark are left alone. Changes apply when you reload a page.")
+                Text("Gives light-only websites a dark look. Photos, videos and dark parts of a page keep their real colors, and sites that are already dark are left alone. On as soon as you allow Ad Nope Dark in Safari. Changes apply when you reload a page.")
             }
 
             Section {
@@ -35,7 +35,7 @@ struct DarkModeView: View {
             } header: {
                 Text("Never darken")
             } footer: {
-                Text(siteInvalid ? "That doesn't look like a domain." : "For sites that look wrong inverted.")
+                Text(siteInvalid ? "That doesn't look like a domain." : "For sites that look wrong darkened. In Safari you can also use the Ad Nope Dark button: Darken this site.")
                     .foregroundStyle(siteInvalid ? .red : .secondary)
             }
 
